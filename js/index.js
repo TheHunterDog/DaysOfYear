@@ -58,3 +58,40 @@ const getDayofYear = (today) => {
   const day = Math.floor(diff / oneDay);
   return day + 1;
 }
+
+const initEvents = () => {
+
+  const acceptButton = document.getElementById('accept');
+  const rejectButton = document.getElementById('reject');
+  const banner = document.getElementById('banner');
+  acceptButton.addEventListener('click', () => {
+    acceptTracking();
+    banner.style.display = 'none';
+  });
+  rejectButton.addEventListener('click', () => {
+    rejectTracking();
+    banner.style.display = 'none';
+  });
+}
+
+const acceptTracking = () => {
+  var script = document.createElement('script');
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JX246GVJ6L';
+  document.head.appendChild(script);
+  script.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JX246GVJ6L');
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JX246GVJ6L');
+}
+
+const rejectTracking = () => {
+  console.log('Tracking rejected');
+}
