@@ -1,4 +1,6 @@
 window.onload = function() {
+  initEvents();
+  setYear(new Date().getFullYear());
   let app = document.getElementById('app');
   const days = renderDays()
   app.innerHTML = days.outerHTML;
@@ -61,8 +63,8 @@ const getDayofYear = (today) => {
 
 const initEvents = () => {
 
-  const acceptButton = document.getElementById('accept');
-  const rejectButton = document.getElementById('reject');
+  const acceptButton = document.getElementById('acceptCookies');
+  const rejectButton = document.getElementById('rejectCookies');
   const banner = document.getElementById('banner');
   acceptButton.addEventListener('click', () => {
     acceptTracking();
@@ -94,4 +96,8 @@ const acceptTracking = () => {
 
 const rejectTracking = () => {
   console.log('Tracking rejected');
+}
+const setYear = (year) => {
+  const yearPlace = document.getElementById('year');
+  yearPlace.innerHTML = year;
 }
